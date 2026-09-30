@@ -558,6 +558,7 @@ MonoBehaviour:
   keyJump: 0
   keyJumpDown: 0
   keyJumpUp: 0
+  keyInteract: 0
   velocity: {x: 0, y: 0}
   reading: 0
   facingDirection: -1
@@ -569,6 +570,13 @@ MonoBehaviour:
   colLeft: {fileID: 1720401467042029679}
   colRight: {fileID: 6636492770580218200}
   ignore_gravity: 0
+  invincible: 0
+  invincibleMAX: 3
+  stun: 0
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  already_dead: 0
   has_walljump: 1
   has_air_friction: 1
   has_skidding_physics: 1

@@ -5359,6 +5359,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d9d1f76229a65546aecd4c28b513aa8, type: 3}
+--- !u!1 &815478123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3758807083330212702, guid: 8d9d1f76229a65546aecd4c28b513aa8, type: 3}
+  m_PrefabInstance: {fileID: 815478122}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1917003284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5406,6 +5411,18 @@ PrefabInstance:
     - target: {fileID: 2132865327488322200, guid: c66bb101a9b205b48ad3280b574c3dcd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800259637524010432, guid: c66bb101a9b205b48ad3280b574c3dcd, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7800259637524010432, guid: c66bb101a9b205b48ad3280b574c3dcd, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 815478123}
+    - target: {fileID: 7800259637524010432, guid: c66bb101a9b205b48ad3280b574c3dcd, type: 3}
+      propertyPath: onDeath.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8489090138709313333, guid: c66bb101a9b205b48ad3280b574c3dcd, type: 3}
       propertyPath: m_Name

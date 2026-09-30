@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class playerMovement : MonoBehaviour
 {
@@ -48,6 +49,14 @@ public class playerMovement : MonoBehaviour
     int wallJumpSide = 0;
 
     public bool ignore_gravity = false;
+
+    // HP SYSTEM
+    public float invincible = 0;
+    public float invincibleMAX = 3.0f;
+    public float stun = 0;
+    public UnityEvent onDeath;
+    public bool already_dead = false;
+    
 
     // Custom Characters -------------------------------
 
@@ -112,6 +121,11 @@ public class playerMovement : MonoBehaviour
         else
         {
             intMove = 0;
+        }
+
+        if (invincible >= 0)
+        {
+            invincible -= Time.deltaTime;
         }
     }
     void FixedUpdate()
@@ -226,6 +240,12 @@ public class playerMovement : MonoBehaviour
         // WALLJUMP -------------------------
         walljump_behavior();
 
+        // DEBUG, REMOVE LATER
+        if(Input.GetButton("debug_death"))
+        {
+            takeDamage(1.0f);
+        }
+
     
         //Set back instantaneous inputs to false at the end of the FixedUpdate
         if(keyJumpDown) keyJumpDown = false;
@@ -326,5 +346,40 @@ public class playerMovement : MonoBehaviour
     public void resumeMovement()
     {
         reading = false;
+    }
+
+    public void takeDamage(float damageAmount = 1.0f, bool instakill = false)
+    {
+        if (invincible <= 0.0f)
+        {
+            // Invincibility frames
+            invincible = invincibleMAX;
+            velocity.x = -RUNSPD * facingDirection;
+
+            jump(JUMP_SPEED * 0.5f); // Knockback
+
+            // Apply damage
+            GameManager.instance.playerHP -= damageAmount;
+            if (GameManager.instance.playerHP <= 0.0f)
+            {
+                die();
+            }
+        }
+        else
+        {
+            if (instakill && !already_dead) // FUCK your invincibilty frames
+            {
+                die();
+            }
+        }
+    }
+
+    public void die()
+    {
+        GameManager.instance.global_position_on_death = new Vector2(transform.position.x, transform.position.y);
+        already_dead = true;
+        GameManager.instance.on_player_death();
+
+        onDeath.Invoke();
     }
 }

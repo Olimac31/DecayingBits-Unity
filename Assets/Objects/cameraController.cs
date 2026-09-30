@@ -5,6 +5,8 @@ using UnityEngine;
 public class cameraController : MonoBehaviour
 {
     [SerializeField] public Transform target;
+    private playerMovement current_player;
+
     public Vector2 offset = new Vector2(0.25f, -0.25f);
 
     public float camLimitUp, camLimitDown, camLimitLeft, camLimitRight;
@@ -14,7 +16,15 @@ public class cameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(target.CompareTag("Player"))
+        {
+            current_player = target.GetComponent<playerMovement>();
 
+            if(current_player != null)
+            {
+                current_player.onDeath.AddListener(on_player_death);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -43,5 +53,14 @@ public class cameraController : MonoBehaviour
             GetComponent<Camera>().enabled = true;
             cameraWaiting = false;
         }
+    }
+
+    public void on_player_death()
+    {
+        GameManager.instance.camera_global_position_on_death = new Vector2(transform.position.x, transform.position.y);
+        GameManager.instance.camera_limit_h_on_death = new Vector2(camLimitLeft, camLimitRight);
+        GameManager.instance.camera_limit_v_on_death = new Vector2(camLimitDown, camLimitUp);
+
+        current_player.onDeath.RemoveListener(on_player_death);
     }
 }
