@@ -54,6 +54,7 @@ public class playerMovement : MonoBehaviour
     public float invincible = 0;
     public float invincibleMAX = 3.0f;
     public float stun = 0;
+    public float stunMAX = 0.5f;
     public UnityEvent onDeath;
     public bool already_dead = false;
     
@@ -87,7 +88,7 @@ public class playerMovement : MonoBehaviour
     {
         rbody.gravityScale = 0;
         // INPUTS ---------------------------------------------
-        if(!reading)
+        if(!reading && stun <= 0)
         {
             //Continuous inputs
             movX = Input.GetAxisRaw("Horizontal");
@@ -126,6 +127,10 @@ public class playerMovement : MonoBehaviour
         if (invincible >= 0)
         {
             invincible -= Time.deltaTime;
+        }
+        if (stun >= 0)
+        {
+            stun -= Time.deltaTime;
         }
     }
     void FixedUpdate()
@@ -354,9 +359,10 @@ public class playerMovement : MonoBehaviour
         {
             // Invincibility frames
             invincible = invincibleMAX;
-            velocity.x = -RUNSPD * facingDirection;
+            velocity.x = -RUNSPD * 0.75f * facingDirection;
+            stun = stunMAX;
 
-            jump(JUMP_SPEED * 0.5f); // Knockback
+            jump(JUMP_SPEED * 0.75f); // Knockback
 
             // Apply damage
             GameManager.instance.playerHP -= damageAmount;

@@ -573,6 +573,7 @@ MonoBehaviour:
   invincible: 0
   invincibleMAX: 3
   stun: 0
+  stunMAX: 0.45
   onDeath:
     m_PersistentCalls:
       m_Calls: []

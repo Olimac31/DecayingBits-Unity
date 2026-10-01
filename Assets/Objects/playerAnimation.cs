@@ -52,5 +52,37 @@ public class playerAnimation : MonoBehaviour
             anims.SetBool("is_airborne", false);
             anims.SetBool("is_falling", false);
         }
+
+        if (player.invincible > 0.0f)
+        {
+            if (player.invincible > 2.9f)
+            {
+                Color tmp = sprite.color;
+                tmp.r = 1;
+                tmp.g = 0;
+                tmp.b = 0;
+                tmp.a = 1.0f;
+                sprite.color = tmp;
+            }
+            else if(player.invincible > 0.2f)
+            {
+                Color tmp = sprite.color;
+                tmp.r = 1;
+                tmp.g = 1;
+                tmp.b = 1;
+                tmp.a = 0.5f;
+
+                sprite.color = tmp;
+            }
+            else
+            {
+                Color tmp = sprite.color;
+                tmp.r = 1;
+                tmp.g = 1;
+                tmp.b = 1;
+                tmp.a = 1.0f;
+                sprite.color = tmp;
+            }
+        }
     }
 }
