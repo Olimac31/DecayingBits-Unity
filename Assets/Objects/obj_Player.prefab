@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   colliding: 0
+  detects_semisolid: 0
 --- !u!1 &1388634195048614163
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::detects_collision
   colliding: 0
+  detects_semisolid: 1
 --- !u!1 &1720401467042029679
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::detects_collision
   colliding: 0
+  detects_semisolid: 0
 --- !u!61 &1465017459024431799
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -322,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::detects_collision
   colliding: 0
+  detects_semisolid: 0
 --- !u!61 &3147849941021781595
 BoxCollider2D:
   m_ObjectHideFlags: 0
