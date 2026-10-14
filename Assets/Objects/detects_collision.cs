@@ -13,17 +13,17 @@ public class detects_collision : MonoBehaviour
         player = GameObject.Find("obj_Player").GetComponent<playerMovement>();
     }
     // Start is called before the first frame update
-    void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         enter_checks(other);
     }
 
-    void OnTriggerStay2D(Collider2D other)
+    protected virtual void OnTriggerStay2D(Collider2D other)
     {
         enter_checks(other);
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if(other.tag == "Ground" || (other.tag == "Semisolid" && detects_semisolid))
         {

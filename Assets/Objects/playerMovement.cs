@@ -362,6 +362,7 @@ public class playerMovement : MonoBehaviour
             velocity.x = -RUNSPD * 0.75f * facingDirection;
             stun = stunMAX;
 
+            transform.position += new Vector3(0f, 1f, 0f);
             jump(JUMP_SPEED * 0.75f); // Knockback
 
             // Apply damage
