@@ -63,6 +63,7 @@ public class Enemy : MonoBehaviour
 
             event_on_death();
             Destroy(gameObject);
+            return;
         }
 
         state_behaviors();
@@ -130,7 +131,7 @@ public class Enemy : MonoBehaviour
 
     public virtual bool damage_checks()
     {
-        if (health > 0 && !friendly && cannot_damage && custom_damage_checks())
+        if (health > 0 && !friendly && !cannot_damage && custom_damage_checks())
         {
             return true;
         }
@@ -154,7 +155,7 @@ public class Enemy : MonoBehaviour
     {
         if (!bolGround())
         {
-            velocity.y -= GRAVITY * Time.deltaTime;
+            velocity.y -= GRAVITY * Time.fixedDeltaTime;
         }
         else
         {
