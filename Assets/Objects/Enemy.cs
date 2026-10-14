@@ -192,17 +192,20 @@ public class Enemy : MonoBehaviour
     // When player stomps enemy -> take damage :(
     public void head_stomped(float damage_to_take = 1.0f)
     {
-        // Obtain player gameObject from its collider
-        playerMovement the_player;
-        the_player = GameObject.Find("obj_Player").GetComponent<playerMovement>();
-
-        if (the_player.velocity.y < 0 && stompable)
+        if (stompable)
         {
-            take_damage(damage_to_take);
-            the_player.velocity.y = player_impulse;
-        }
+            // Obtain player gameObject from its collider
+            playerMovement the_player;
+            the_player = GameObject.Find("obj_Player").GetComponent<playerMovement>();
 
-        stomped.Invoke();
+            if (the_player.velocity.y < 0 && stompable)
+            {
+                take_damage(damage_to_take);
+                the_player.velocity.y = player_impulse;
+            }
+
+            stomped.Invoke();
+        }
     }
 
     public void take_damage(float amount)
