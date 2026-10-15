@@ -248,7 +248,7 @@ public class playerMovement : MonoBehaviour
         // DEBUG, REMOVE LATER
         if(Input.GetButton("debug_death"))
         {
-            takeDamage(1.0f);
+            Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)");
         }
 
     
