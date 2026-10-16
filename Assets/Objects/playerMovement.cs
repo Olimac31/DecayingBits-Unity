@@ -132,6 +132,12 @@ public class playerMovement : MonoBehaviour
         {
             stun -= Time.deltaTime;
         }
+
+        // DEBUG, REMOVE LATER
+        if(Input.GetButton("debug_death"))
+        {
+            Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)", "gaming", "default");
+        }
     }
     void FixedUpdate()
     {
@@ -244,12 +250,6 @@ public class playerMovement : MonoBehaviour
 
         // WALLJUMP -------------------------
         walljump_behavior();
-
-        // DEBUG, REMOVE LATER
-        if(Input.GetButton("debug_death"))
-        {
-            Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)");
-        }
 
     
         //Set back instantaneous inputs to false at the end of the FixedUpdate

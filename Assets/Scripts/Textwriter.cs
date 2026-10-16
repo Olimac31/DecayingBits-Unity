@@ -12,11 +12,13 @@ public class Textwriter : MonoBehaviour
     public string message_to_parse = "";
     public string current_message = "";
     float current_position = 0f;
-    float write_speed = 60f;
+    float write_speed = 70f;
 
     // Visuals
-    public string charname = "";
-    public string charportrait = "";
+    public CharDialogueData character_data;
+    public string current_emotion;
+    float voice_beep_cooldown = 0f;
+    float voice_beep_cooldown_max = 0.08f;
 
     public CanvasGroup canvas_group;
     
@@ -64,6 +66,11 @@ public class Textwriter : MonoBehaviour
         if (enter_cooldown > 0)
         {
             enter_cooldown -= Time.deltaTime;
+        }
+
+        if (voice_beep_cooldown > 0)
+        {
+            voice_beep_cooldown -= Time.deltaTime;
         }
     }
 
@@ -131,6 +138,7 @@ public class Textwriter : MonoBehaviour
     {
         current_position = 0f;
         current_message = "";
+
     }
     void state_reading_behavior()
     {
@@ -139,6 +147,8 @@ public class Textwriter : MonoBehaviour
         {
             current_position += Time.deltaTime * write_speed;
             current_message = message_to_parse.Substring(0, (int)current_position);
+
+            play_voice_beep();
         }
         else
         {
@@ -167,9 +177,27 @@ public class Textwriter : MonoBehaviour
         }
     }
 
-    public void show_message(string message_to_show)
+    public void show_message(string message_to_show = "", string emotion_to_show = "default", string character_to_show = "default")
     {
         message_to_parse = message_to_show;
+        current_emotion = emotion_to_show;
+        change_character(character_to_show);
         change_state("reading");
+    }
+
+    public void play_voice_beep()
+    {
+        if (voice_beep_cooldown <= 0)
+        {
+            SoundManager.instance.PlaySound(character_data.voice_beep);
+            voice_beep_cooldown = voice_beep_cooldown_max;
+        }
+    }
+
+    // PLACEHOLDER, CHANGE LATER TO WORK WITH A LOOKUP TABLE
+    public void change_character(string character_to_change_to)
+    {
+        // Load character data from lookup table, searching by string
+        character_data = CharacterDialogueTable.instance.get_character(character_to_change_to);
     }
 }
