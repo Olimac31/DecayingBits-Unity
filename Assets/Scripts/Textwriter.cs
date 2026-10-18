@@ -194,7 +194,6 @@ public class Textwriter : MonoBehaviour
         }
     }
 
-    // PLACEHOLDER, CHANGE LATER TO WORK WITH A LOOKUP TABLE
     public void change_character(string character_to_change_to)
     {
         // Load character data from lookup table, searching by string

@@ -59,6 +59,9 @@ public class playerMovement : MonoBehaviour
     public bool already_dead = false;
     
 
+    // SFX
+    public AudioClip snd_jump, snd_hurt, snd_kick;
+
     // Custom Characters -------------------------------
 
     public bool has_walljump = true;
@@ -265,6 +268,7 @@ public class playerMovement : MonoBehaviour
         if(keyJump && bolGround() && !jumped)
             {
                 jump(JUMP_SPEED);
+                SoundManager.instance.PlaySound(snd_jump);
             }
         
         if (keyJumpUp && velocity.y > 0)
@@ -303,6 +307,8 @@ public class playerMovement : MonoBehaviour
 
                     jump(JUMP_SPEED * 0.7f);
                     velocity.x = -RUNSPD * 1.1f * side;
+
+                    SoundManager.instance.PlaySound(snd_kick);
                 }
             }
         }
@@ -364,6 +370,8 @@ public class playerMovement : MonoBehaviour
 
             transform.position += new Vector3(0f, 1f, 0f);
             jump(JUMP_SPEED * 0.75f); // Knockback
+
+            SoundManager.instance.PlaySound(snd_hurt);
 
             // Apply damage
             GameManager.instance.playerHP -= damageAmount;

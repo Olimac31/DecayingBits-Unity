@@ -493,11 +493,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1534127016168946763, guid: 670b2ab2855b3794db8ea59242d9d8ff, type: 3}
       propertyPath: sceneToLoad
-      value: Assets/Scenes/testroom1.unity
+      value: Assets/Scenes/testcutscene.unity
       objectReference: {fileID: 0}
     - target: {fileID: 1534127016168946763, guid: 670b2ab2855b3794db8ea59242d9d8ff, type: 3}
       propertyPath: spawnTarget
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1674438271077528440, guid: 670b2ab2855b3794db8ea59242d9d8ff, type: 3}
       propertyPath: m_Name

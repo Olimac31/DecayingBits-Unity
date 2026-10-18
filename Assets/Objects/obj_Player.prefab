@@ -582,6 +582,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   already_dead: 0
+  snd_jump: {fileID: 8300000, guid: 0dcbe093376f8cd438793840a549480a, type: 3}
+  snd_hurt: {fileID: 8300000, guid: e6a6b0a8950378943ac6ff4723eec72e, type: 3}
+  snd_kick: {fileID: 8300000, guid: b057d7a752c77c6468b8b5f1ee01c38f, type: 3}
   has_walljump: 1
   has_air_friction: 1
   has_skidding_physics: 1
