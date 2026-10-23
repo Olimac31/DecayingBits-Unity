@@ -35,6 +35,7 @@ public class playerMovement : MonoBehaviour
     public float coyoteMAX = 20f;
     public bool has_max_vspeed = true;
     public float max_vspeed = 20f * MULTIPLIER;
+    public bool can_cancel_jump = false;
 
     
     Rigidbody2D rbody;
@@ -86,6 +87,13 @@ public class playerMovement : MonoBehaviour
         startPos = new Vector2(transform.position.x, transform.position.y);
         velocity = Vector2.zero;
         MAX_SPEED = WALKSPD;
+
+
+        // PLACEHOLDER
+        if(GameManager.instance.player_broken_jump)
+        {
+            JUMP_SPEED = GameManager.instance.get_broken_jump();
+        }
     }
 
     // Update is called once per frame
@@ -273,9 +281,10 @@ public class playerMovement : MonoBehaviour
                 SoundManager.instance.PlaySound(snd_jump);
             }
         
-        if (keyJumpUp && velocity.y > 0)
+        if (keyJumpUp && velocity.y > 0 && can_cancel_jump)
             {
                 velocity.y = velocity.y * JUMP_CANCEL_MULTIPLIER;
+                can_cancel_jump = false;
             }
     }
 
@@ -322,6 +331,7 @@ public class playerMovement : MonoBehaviour
             velocity.y = 0;
             coyote = coyoteMAX;
             jumped = false;
+            can_cancel_jump = true;
         }
     
     public void jump(float force)

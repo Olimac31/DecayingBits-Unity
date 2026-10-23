@@ -202,6 +202,7 @@ public class Enemy : MonoBehaviour
             {
                 take_damage(damage_to_take);
                 the_player.velocity.y = player_impulse;
+                the_player.can_cancel_jump = false;
             }
 
             stomped.Invoke();

@@ -43,6 +43,17 @@ public class GameManager : MonoBehaviour
     private Dictionary<string, List<string>> coin_tracker = new Dictionary<string, List<string>>();
     private Dictionary<string, List<string>> og_coin_tracker = new Dictionary<string, List<string>>();
 
+    
+    /*
+    ///////////////////////////////
+    //   DEMO/PLACEHOLDER STUFF  //-------------------------------------
+    ///////////////////////////////
+    */
+
+    public bool player_broken_jump = true;
+    float player_broken_jump_force = 16.0f;
+
+
     //Singleton code---------------------------------
     void Awake()
     {
@@ -137,5 +148,10 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public float get_broken_jump()
+    {
+        return player_broken_jump_force;
     }
 }
