@@ -31,12 +31,14 @@ public class playerAnimation : MonoBehaviour
         else
         {
             anims.SetBool("is_walking", false);
+            anims.speed = 0.1f;
         }
 
         // JUMPING and FALLING ------------------------------
         if (player.bolGround() == false)
         {
             anims.SetBool("is_airborne", true);
+            anims.speed = 0.2f;
 
             if (player.velocity.y < 0.1f)
             {
@@ -55,7 +57,7 @@ public class playerAnimation : MonoBehaviour
 
         if (player.invincible > 0.0f)
         {
-            if (player.invincible > 2.9f)
+            if (player.invincible > 2.5f)
             {
                 Color tmp = sprite.color;
                 tmp.r = 1;
@@ -63,6 +65,12 @@ public class playerAnimation : MonoBehaviour
                 tmp.b = 0;
                 tmp.a = 1.0f;
                 sprite.color = tmp;
+
+                anims.Play("player_hurt");
+            }
+            if (player.invincible < 2.5f && player.invincible > 2.4f)
+            {
+                anims.Play("player_walk");
             }
             else if(player.invincible > 0.2f)
             {

@@ -10,17 +10,19 @@ public class playerMovement : MonoBehaviour
     
     public const float MULTIPLIER = 1.0f;
     float GRAVITY = 1.0f;
-    float WALK_SPEED = 1.2f * MULTIPLIER; // 3.5
-    float AIR_WALK_SPEED = 2.4f * MULTIPLIER; // 4.0
-    float JUMP_SPEED = 32.0f * MULTIPLIER; // 6.5
-    float WALKSPD = 18.0f * MULTIPLIER; // 10.0
+    float WALK_SPEED = 0.8f * MULTIPLIER; // 3.5
+    float AIR_WALK_SPEED = 1.4f * MULTIPLIER; // 4.0
+    float JUMP_SPEED = 28.0f * MULTIPLIER; // 6.5
+    float WALKSPD = 19.0f * MULTIPLIER; // 10.0
     float RUNSPD = 26.0f * MULTIPLIER;
     float SKIDDING_MULTIPLIER = 3.0f;
     float MAX_SPEED;
     public Vector2 velocity = new Vector2(0, 0);
 
-    float AIR_GRAVITY = 45.0f * MULTIPLIER; // 12.0f
-    float GROUND_GRAVITY = 120.0f * MULTIPLIER;
+    float AIR_GRAVITY = 40.0f * MULTIPLIER; // 12.0f
+    float GROUND_GRAVITY = 105.0f * MULTIPLIER;
+
+    float JUMP_CANCEL_MULTIPLIER = 0.3f;
     
     public bool reading = false;
     public int facingDirection = -1;
@@ -273,7 +275,7 @@ public class playerMovement : MonoBehaviour
         
         if (keyJumpUp && velocity.y > 0)
             {
-                velocity.y = velocity.y * 0.2f;
+                velocity.y = velocity.y * JUMP_CANCEL_MULTIPLIER;
             }
     }
 
@@ -365,10 +367,10 @@ public class playerMovement : MonoBehaviour
         {
             // Invincibility frames
             invincible = invincibleMAX;
-            velocity.x = -RUNSPD * 0.75f * facingDirection;
+            velocity.x = -WALKSPD * 0.5f * facingDirection;
             stun = stunMAX;
 
-            transform.position += new Vector3(0f, 1f, 0f);
+            //transform.position += new Vector3(0f, 1f, 0f);
             jump(JUMP_SPEED * 0.75f); // Knockback
 
             SoundManager.instance.PlaySound(snd_hurt);
