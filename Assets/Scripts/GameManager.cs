@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float playerHP = 3.0f; //Player Health
     public float playerHPMAX = 3.0f; //Max player health
     public bool playerJustDied = false;
+    public int playerCoin = 0;
 
     public int targetSpawn = 0; // The target spawnpoint, used between every single room transition
     public string checkpointRoom = ""; // The room where the checkpoint is
@@ -29,7 +31,17 @@ public class GameManager : MonoBehaviour
 
     public bool globalLockedBlocks = true;
 
-     public UnityEvent health_changed;
+    public UnityEvent health_changed;
+    public UnityEvent coin_changed;
+
+    /*
+    ////////////////////////////
+    //   Inventory Variables  //-------------------------------------
+    ///////////////////////////
+    */
+
+    private Dictionary<string, List<string>> coin_tracker = new Dictionary<string, List<string>>();
+    private Dictionary<string, List<string>> og_coin_tracker = new Dictionary<string, List<string>>();
 
     //Singleton code---------------------------------
     void Awake()
@@ -48,7 +60,8 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        coin_tracker.Add("room name here", new List<string>(){"coin name here"});
+        og_coin_tracker.Add("room name here", new List<string>(){"coin name here"});
     }
 
     // Update is called once per frame
@@ -87,5 +100,42 @@ public class GameManager : MonoBehaviour
     public void on_health_change()
     {
         health_changed.Invoke();
+    }
+
+    public void on_coin_change()
+    {
+        coin_changed.Invoke();
+    }
+
+    public void grab_coin(int coins_grabbed, string coin_name, string room_where_grabbed)
+    {
+        playerCoin += coins_grabbed;
+
+        // Check current room exists in the coin tracker
+        if(coin_tracker.ContainsKey(room_where_grabbed))
+        {
+            coin_tracker[room_where_grabbed].Add(coin_name);
+        }
+        else
+        {
+            coin_tracker[room_where_grabbed] = new List<string>(){coin_name};
+        }
+        on_coin_change();
+    }
+
+    public bool return_coin_state(string coin_to_check, string room_to_check)
+    {
+        if (coin_tracker.ContainsKey(room_to_check))
+        {
+            foreach(string coin_id in coin_tracker[room_to_check])
+            {
+                if(coin_id == coin_to_check)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

@@ -33,6 +33,7 @@ public class HUD : MonoBehaviour
 
         // Update health text when health is changed in the Game Manager
         GameManager.instance.health_changed.AddListener(update_health_text);
+        GameManager.instance.coin_changed.AddListener(update_coins);
 
         update_health_text();
     }
@@ -41,6 +42,11 @@ public class HUD : MonoBehaviour
     {
         hp_text.text = GameManager.instance.playerHP.ToString() + "/" + GameManager.instance.playerHPMAX.ToString();
         hp_fill.GetComponent<Image>().fillAmount = GameManager.instance.playerHP / GameManager.instance.playerHPMAX;
+    }
+
+    void update_coins()
+    {
+        coin_text.text = "x " + GameManager.instance.playerCoin.ToString();
     }
 
     public void HUD_ENTER()

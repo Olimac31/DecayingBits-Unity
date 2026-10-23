@@ -10,10 +10,10 @@ public class playerMovement : MonoBehaviour
     
     public const float MULTIPLIER = 1.0f;
     float GRAVITY = 1.0f;
-    float WALK_SPEED = 0.8f * MULTIPLIER; // 3.5
-    float AIR_WALK_SPEED = 1.4f * MULTIPLIER; // 4.0
+    float WALK_SPEED = 0.75f * MULTIPLIER; // 3.5
+    float AIR_WALK_SPEED = 1.35f * MULTIPLIER; // 4.0
     float JUMP_SPEED = 28.0f * MULTIPLIER; // 6.5
-    float WALKSPD = 19.0f * MULTIPLIER; // 10.0
+    float WALKSPD = 20.0f * MULTIPLIER; // 10.0
     float RUNSPD = 26.0f * MULTIPLIER;
     float SKIDDING_MULTIPLIER = 3.0f;
     float MAX_SPEED;
