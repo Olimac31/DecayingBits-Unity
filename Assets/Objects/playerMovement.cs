@@ -389,6 +389,8 @@ public class playerMovement : MonoBehaviour
                 die();
             }
         }
+
+        GameManager.instance.on_health_change();
     }
 
     public void die()

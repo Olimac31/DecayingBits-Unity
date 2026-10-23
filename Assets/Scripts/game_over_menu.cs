@@ -7,7 +7,7 @@ public class game_over_menu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        HUD.instance.HUD_HIDE();
     }
 
     // Update is called once per frame

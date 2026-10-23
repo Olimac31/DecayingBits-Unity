@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     public Vector2 camera_limit_v_on_death = new Vector2(-999, 999);
 
     public bool globalLockedBlocks = true;
+
+     public UnityEvent health_changed;
 
     //Singleton code---------------------------------
     void Awake()
@@ -79,5 +82,10 @@ public class GameManager : MonoBehaviour
 
         // Go to game over scene
         SceneManager.LoadScene("Assets/Scenes/GameOver.unity", LoadSceneMode.Single);
+    }
+
+    public void on_health_change()
+    {
+        health_changed.Invoke();
     }
 }

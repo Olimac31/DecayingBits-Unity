@@ -570,7 +570,7 @@ MonoBehaviour:
   coyote: 0
   coyoteMAX: 20
   has_max_vspeed: 1
-  max_vspeed: 200
+  max_vspeed: 39
   colLeft: {fileID: 1720401467042029679}
   colRight: {fileID: 6636492770580218200}
   ignore_gravity: 0

@@ -70,6 +70,7 @@ public class testcutscene_cutscene_1 : Cutscene
             case 13:
             the_player.reading = false;
             SoundManager.instance.StopMusic();
+            HUD.instance.HUD_ENTER();
             break;
 
             default:
