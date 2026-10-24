@@ -770,6 +770,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5267359722359875270, guid: 1b2e51db628f1af41be717ee57088de7, type: 3}
+      propertyPath: sceneToLoad
+      value: Assets/Scenes/MainMenu.unity
+      objectReference: {fileID: 0}
     - target: {fileID: 5766031908051225093, guid: 1b2e51db628f1af41be717ee57088de7, type: 3}
       propertyPath: m_Name
       value: gamestart

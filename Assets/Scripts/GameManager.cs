@@ -53,6 +53,11 @@ public class GameManager : MonoBehaviour
     public bool player_broken_jump = true;
     float player_broken_jump_force = 16.0f;
 
+    string room_to_go_to = "";
+    float transition_timer = 0f;
+    float transition_timer_max = 0.5f;
+    bool transitioning_room = false;
+
 
     //Singleton code---------------------------------
     void Awake()
@@ -88,6 +93,18 @@ public class GameManager : MonoBehaviour
                 goto_gameover();
             }
         }
+
+        if(transitioning_room)
+        {
+            transition_timer += Time.deltaTime;
+
+            if (transition_timer >= transition_timer_max)
+            {
+                goto_room();
+            }
+        }
+
+
     }
 
     public void on_player_death()
@@ -106,6 +123,22 @@ public class GameManager : MonoBehaviour
 
         // Go to game over scene
         SceneManager.LoadScene("Assets/Scenes/GameOver.unity", LoadSceneMode.Single);
+    }
+
+    public void change_room(string new_room, float transitionTime = 0.5f)
+    {
+        room_to_go_to = new_room;
+        transition_timer_max = transitionTime;
+        Transition.instance.trans_in();
+
+        transitioning_room = true;
+    }
+    public void goto_room()
+    {
+        transitioning_room = false;
+        transition_timer = 0f;
+        SceneManager.LoadScene(room_to_go_to, LoadSceneMode.Single);
+        Transition.instance.trans_out();
     }
 
     public void on_health_change()
