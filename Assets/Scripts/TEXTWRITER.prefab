@@ -201,6 +201,7 @@ MonoBehaviour:
   character_data: {fileID: 11400000, guid: 53dc7491a7abb7b45adad308c7c1d2c4, type: 2}
   current_emotion: 
   canvas_group: {fileID: 0}
+  SFX_Skip: {fileID: 8300000, guid: 56276e8d877f78d4b80e056f91e0140b, type: 3}
   closed:
     m_PersistentCalls:
       m_Calls: []

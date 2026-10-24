@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     ///////////////////////////////
     */
 
-    public bool player_broken_jump = true;
+    public bool player_broken_jump = false;
     float player_broken_jump_force = 16.0f;
 
     string room_to_go_to = "";

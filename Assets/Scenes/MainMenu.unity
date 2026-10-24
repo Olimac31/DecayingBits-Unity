@@ -1062,6 +1062,18 @@ PrefabInstance:
       value: MENU
       objectReference: {fileID: 0}
     - target: {fileID: 7435008840362328303, guid: 37f72471dbe28244f869f9edebcf172d, type: 3}
+      propertyPath: SFX_Cancel
+      value: 
+      objectReference: {fileID: 8300000, guid: 971480eb48f9acd46b11bac84c9fedc6, type: 3}
+    - target: {fileID: 7435008840362328303, guid: 37f72471dbe28244f869f9edebcf172d, type: 3}
+      propertyPath: SFX_Select
+      value: 
+      objectReference: {fileID: 8300000, guid: 363acf172757d89429b8434a06717341, type: 3}
+    - target: {fileID: 7435008840362328303, guid: 37f72471dbe28244f869f9edebcf172d, type: 3}
+      propertyPath: SFX_Confirm
+      value: 
+      objectReference: {fileID: 8300000, guid: a5ab1ffdf4e4a334d8360b0156584870, type: 3}
+    - target: {fileID: 7435008840362328303, guid: 37f72471dbe28244f869f9edebcf172d, type: 3}
       propertyPath: leaving_timer
       value: 
       objectReference: {fileID: 1905322056}

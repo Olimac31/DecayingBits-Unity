@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject leaving_timer;
     Animator anims;
+
+    // SFX
+    public AudioClip SFX_Select, SFX_Cancel, SFX_Confirm;
     
 
     public string scene_to_load = "";
@@ -93,17 +96,26 @@ public class MainMenu : MonoBehaviour
     public void change_option(int amount)
     {
         int temp_option = option_id + amount;
+        bool play_the_sfx = true;
 
         // Lower limit
         if (temp_option < 0)
         {
             temp_option = 0;
+            play_the_sfx = false;
         }
 
         // Upper limit
         if (temp_option > option_positions.Count - 1)
         {
             temp_option = option_positions.Count - 1;
+            play_the_sfx = false;
+        }
+
+        // SFX
+        if(amount != 0 && play_the_sfx)
+        {
+            SoundManager.instance.PlaySound(SFX_Select);
         }
 
         option_id = temp_option;
@@ -152,6 +164,7 @@ public class MainMenu : MonoBehaviour
         if (Input.GetButtonDown("Submit"))
         {
             choose_an_option();
+            SoundManager.instance.PlaySound(SFX_Confirm);
         }
 
         // VISUALS
