@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0ff70987bfb77b4ca2dad73355e1584, type: 3}
   m_Name: default_char
   m_EditorClassIdentifier: Assembly-CSharp::CharDialogueData
-  charname: Text
+  charname: ---
   voice_beep: {fileID: 8300000, guid: d128423b44306464a80c09f0516cac27, type: 3}
   emotions:
   - animation_name: default

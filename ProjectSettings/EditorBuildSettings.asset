@@ -23,6 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 1a4e097496ddc554191f083fd2fbe9a0
+  - enabled: 1
+    path: Assets/Scenes/OlimacIntro.unity
+    guid: 38cb53673b14d3a47941c92df93c42de
+  - enabled: 1
+    path: Assets/Scenes/STAGE_1/stage1_0.unity
+    guid: 1c51409007af9c34bb1a93b044eacf52
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

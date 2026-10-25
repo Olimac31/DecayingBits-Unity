@@ -60,7 +60,7 @@ public class MainMenu : MonoBehaviour
 
             case STATES_LEAVING:
             anims.Play("anim_quit");
-            leaving_timer.GetComponent<GodotTimer>().timer_start(); // TODO ADD LISTENER
+            leaving_timer.GetComponent<GodotTimer>().timer_start();
             break;
 
             case STATES_QUITTING:
@@ -128,7 +128,7 @@ public class MainMenu : MonoBehaviour
         {
             // Start
             case 0:
-            scene_to_load = "Assets/Scenes/SampleScene.unity";
+            scene_to_load = "Assets/Scenes/STAGE_1/stage1_0.unity";
             change_state(STATES_LEAVING);
             break;
 
@@ -178,6 +178,6 @@ public class MainMenu : MonoBehaviour
 
     public void leave_menu()
     {
-        GameManager.instance.change_room(scene_to_load);
+        GameManager.instance.change_room(scene_to_load, 1.5f);
     }
 }

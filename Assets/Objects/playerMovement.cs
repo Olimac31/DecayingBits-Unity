@@ -275,6 +275,11 @@ public class playerMovement : MonoBehaviour
 
     public void basic_jumping_behavior()
     {
+        if(GameManager.instance.player_broken_jump)
+        {
+            can_cancel_jump = false;
+        }
+
         if(keyJump && bolGround() && !jumped)
             {
                 jump(JUMP_SPEED);
@@ -302,7 +307,7 @@ public class playerMovement : MonoBehaviour
 
     public void walljump_behavior()
     {
-        if (has_walljump)
+        if (has_walljump && GameManager.instance.player_walljump)
         {
             // If you already jumped, you're airborne and there's a wall
             // on either side
