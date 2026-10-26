@@ -3,15 +3,25 @@ using UnityEngine;
 public class Enemy_Basic : Enemy
 {
     public GameObject eyeLeft, eyeRight;
+    Animator anims;
+    SpriteRenderer sprite;
     protected override void Start()
     {
         base.Start();
+
+        max_health = 1f;
+        health = max_health;
         
-        MAX_SPEED = 8f;
+        MAX_SPEED = 7f;
         has_gravity = true;
         stompable = true;
         ignore_damage = false;
         cannot_damage = false;
+
+        sprite = GetComponent<SpriteRenderer>();
+        anims = GetComponent<Animator>();
+
+        anims.speed = 0.1f;
 
         change_state("walk_left");
     }
@@ -52,7 +62,7 @@ public class Enemy_Basic : Enemy
 
     void state_walk_left_enter()
     {
-        
+        sprite.flipX = true;
     }
     void state_walk_left_behavior()
     {
@@ -66,7 +76,7 @@ public class Enemy_Basic : Enemy
 
     void state_walk_right_enter()
     {
-        
+        sprite.flipX = false;
     }
     void state_walk_right_behavior()
     {
