@@ -5,7 +5,7 @@ public class detects_collision : MonoBehaviour
     public bool colliding = false;
     public bool detects_semisolid = false;
 
-    playerMovement player;
+    protected playerMovement player;
 
     void Start()
     {
@@ -36,7 +36,7 @@ public class detects_collision : MonoBehaviour
         return colliding;
     }
 
-    void enter_checks(Collider2D other)
+    public virtual void enter_checks(Collider2D other)
     {
         if(other.tag == "Ground")
         {
