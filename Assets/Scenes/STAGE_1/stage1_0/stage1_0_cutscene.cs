@@ -13,11 +13,24 @@ public class stage1_0_cutscene : Cutscene
         switch(step)
         {
             case 0:
-            the_player.reading = true;
-            the_player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            anims.Play("s1_0_phase1");
+            if(GameManager.instance.intro_cutscene_seen)
+            {
+                playeractor.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                cam.target = the_player.transform;
+                cam.camLimitUp = 9f;
+                HUD.instance.HUD_ENTER();
 
-            playeractor.speed = 0.1f;
+                jump_to_step(10);
+                return;
+            }
+            else
+            {
+                the_player.reading = true;
+                the_player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                anims.Play("s1_0_phase1");
+
+                playeractor.speed = 0.1f;
+            }
             break;
 
             case 1:
@@ -68,8 +81,15 @@ public class stage1_0_cutscene : Cutscene
             break;
 
             case 9:
+            GameManager.instance.intro_cutscene_seen = true;
             anims.Play("s1_0_phase3"); // tutorial buttons loop
             break;
+
+            // Skip cutscene
+            case 10:
+            anims.Play("s1_0_SKIP");
+            break;
+
 
             default:
             break;

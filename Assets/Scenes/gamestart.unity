@@ -563,6 +563,10 @@ PrefabInstance:
       propertyPath: player_broken_jump
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 37255754531245739, guid: 3077d24ff900d8847a4b21a81082754f, type: 3}
+      propertyPath: intro_cutscene_seen
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400787362222291937, guid: 3077d24ff900d8847a4b21a81082754f, type: 3}
       propertyPath: m_Name
       value: GameManager

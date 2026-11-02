@@ -10,6 +10,8 @@ public class Enemy_Saw : Enemy
     int spotIndex = 0;
     public bool inReverse = false;
 
+    public bool INVISIBLE = false;
+
     Animator anims;
 
     protected override void Start()
@@ -33,6 +35,11 @@ public class Enemy_Saw : Enemy
         else
         {
             change_state("default");
+        }
+
+        if(INVISIBLE)
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
         }
     }
 

@@ -53,7 +53,13 @@ public class GameManager : MonoBehaviour
     public bool player_broken_jump = true;
     float player_broken_jump_force = 16.0f;
     public bool player_walljump = false;
+    public bool intro_cutscene_seen = false;
 
+    /*
+    ///////////////
+    //  NORMAL  //-------------------------------------
+    /////////////
+    */
     string room_to_go_to = "";
     float transition_timer = 0f;
     float transition_timer_max = 0.5f;
