@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ff70987bfb77b4ca2dad73355e1584, type: 3}
+  m_Name: refwell
+  m_EditorClassIdentifier: Assembly-CSharp::CharDialogueData
+  charname: Refwell
+  voice_beep: {fileID: 8300000, guid: d65fc84ee9c3fcd4299ed2b8764306fd, type: 3}
+  emotions:
+  - animation_name: default
+    frames:
+    - {fileID: -1791452004269973972, guid: 71d5b1c1e675ba146b75407fa297a581, type: 3}
+    - {fileID: -804183405, guid: 71d5b1c1e675ba146b75407fa297a581, type: 3}
+  - animation_name: mad
+    frames:
+    - {fileID: 2070145669, guid: 71d5b1c1e675ba146b75407fa297a581, type: 3}
+    - {fileID: 1149863212, guid: 71d5b1c1e675ba146b75407fa297a581, type: 3}
+  offset: {x: 0, y: 0}

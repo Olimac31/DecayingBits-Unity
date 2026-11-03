@@ -15,6 +15,8 @@ public class Cutscene : MonoBehaviour
     protected GameObject chosen_actor;
     protected string chosen_actor_anim = "default";
 
+    public UnityEvent finished_a_cutscene;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -80,5 +82,10 @@ public class Cutscene : MonoBehaviour
     public virtual void play_animation_on_chosen_actor()
     {
         chosen_actor.GetComponent<Animator>().Play(chosen_actor_anim);
+    }
+
+    public virtual void signal_cutscene_end()
+    {
+        finished_a_cutscene.Invoke();
     }
 }

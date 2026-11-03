@@ -149,7 +149,7 @@ public class playerMovement : MonoBehaviour
         // DEBUG, REMOVE LATER
         if(Input.GetButton("debug_death"))
         {
-            Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)", "gaming", "default");
+            Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)", "default", "refwell");
         }
     }
     void FixedUpdate()

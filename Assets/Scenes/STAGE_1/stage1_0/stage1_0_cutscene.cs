@@ -83,11 +83,15 @@ public class stage1_0_cutscene : Cutscene
             case 9:
             GameManager.instance.intro_cutscene_seen = true;
             anims.Play("s1_0_phase3"); // tutorial buttons loop
+            
+            signal_cutscene_end();
             break;
 
             // Skip cutscene
             case 10:
             anims.Play("s1_0_SKIP");
+            
+            signal_cutscene_end();
             break;
 
 

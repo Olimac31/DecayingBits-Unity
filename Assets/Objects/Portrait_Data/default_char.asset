@@ -18,4 +18,5 @@ MonoBehaviour:
   - animation_name: default
     frames:
     - {fileID: 5114437815175404407, guid: 1ee7b3508995e5a4cb0007c5dac485e4, type: 3}
+    - {fileID: 5114437815175404407, guid: 1ee7b3508995e5a4cb0007c5dac485e4, type: 3}
   offset: {x: 0, y: 0}
