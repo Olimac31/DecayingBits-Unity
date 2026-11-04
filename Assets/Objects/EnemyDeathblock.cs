@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyDeathblock : Enemy
 {
+    public bool is_instakill = true;
     protected override void Start()
     {
         base.Start();
@@ -11,7 +12,7 @@ public class EnemyDeathblock : Enemy
         stompable = false;
         ignore_damage = true;
         cannot_damage = false;
-        instakill = true;
+        instakill = is_instakill;
 
         GetComponent<SpriteRenderer>().enabled = false;
 

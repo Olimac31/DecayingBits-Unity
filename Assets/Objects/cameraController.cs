@@ -23,6 +23,7 @@ public class cameraController : MonoBehaviour
             if(current_player != null)
             {
                 current_player.onDeath.AddListener(on_player_death);
+                current_player.cam = gameObject;
             }
         }
     }

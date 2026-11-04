@@ -12,7 +12,7 @@ public class playerMovement : MonoBehaviour
     float GRAVITY = 1.0f;
     float WALK_SPEED = 0.75f * MULTIPLIER; // 3.5
     float AIR_WALK_SPEED = 1.35f * MULTIPLIER; // 4.0
-    float JUMP_SPEED = 28.0f * MULTIPLIER; // 6.5
+    float JUMP_SPEED = GameManager.instance.get_regular_jump() * MULTIPLIER; // 6.5
     float WALKSPD = 20.0f * MULTIPLIER; // 10.0
     float RUNSPD = 26.0f * MULTIPLIER;
     float SKIDDING_MULTIPLIER = 3.0f;
@@ -71,6 +71,9 @@ public class playerMovement : MonoBehaviour
     public bool has_air_friction = true;
     public bool has_skidding_physics = true;
     public bool doubleJump = false;
+
+    // CAMERA -------------------------
+    public GameObject cam;
 
     public Vector2 startPos;
     // Start is called once before the first execution of Update after the MonoBehaviour is created

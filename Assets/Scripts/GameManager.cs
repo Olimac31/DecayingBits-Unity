@@ -50,9 +50,9 @@ public class GameManager : MonoBehaviour
     ///////////////////////////////
     */
 
-    public bool player_broken_jump = true;
+    public bool player_broken_jump = false;
     float player_broken_jump_force = 16.0f;
-    float player_normal_jump_force = 28.0f;
+    float player_normal_jump_force = 30.0f;
     public bool player_walljump = false;
     public bool intro_cutscene_seen = false;
     public bool refwell_cutscene_seen = false;
@@ -153,6 +153,16 @@ public class GameManager : MonoBehaviour
     public void on_health_change()
     {
         health_changed.Invoke();
+    }
+
+    public void heal_player(float heal_amount)
+    {
+        playerHP += heal_amount;
+        if(playerHP > playerHPMAX)
+        {
+            playerHP = playerHPMAX;
+        }
+        on_health_change();
     }
 
     public void on_coin_change()

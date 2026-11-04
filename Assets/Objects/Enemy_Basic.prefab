@@ -339,6 +339,7 @@ MonoBehaviour:
       m_Calls: []
   eyeLeft: {fileID: 4238915116770819088}
   eyeRight: {fileID: 4043439815493753653}
+  SFX_DEATH: {fileID: 8300000, guid: 3fdb31441c4902a499b1ff16c82c013d, type: 3}
 --- !u!61 &5731459634649673815
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ public class Enemy_Basic : Enemy
     public GameObject eyeLeft, eyeRight;
     Animator anims;
     SpriteRenderer sprite;
+
+    public AudioClip SFX_DEATH;
     protected override void Start()
     {
         base.Start();
@@ -95,5 +97,10 @@ public class Enemy_Basic : Enemy
     bool right_is_colliding()
     {
         return eyeRight.GetComponent<detects_collision>().is_colliding();
+    }
+
+    protected override void event_on_death()
+    {
+        SoundManager.instance.PlaySound(SFX_DEATH);
     }
 }

@@ -74,7 +74,7 @@ public class stage1_4_cutscene : Cutscene
             break;
 
             case 7:
-            send_message("In that case... WELCOME to <color=red>Zone -1!</color>", "default", "refwell");
+            send_message("In that case... WELCOME TO <color=red>ZONE -1!</color>", "default", "refwell");
             break;
 
             case 8:
@@ -83,11 +83,11 @@ public class stage1_4_cutscene : Cutscene
             break;
 
             case 9:
-            send_message("Say... you seem a bit unequipped.", "default", "refwell");
+            send_message("You seem a bit... unequipped.", "default", "refwell");
             break;
 
             case 10:
-            send_message("Is your name 'BERNARD' by any chance?", "default", "refwell");
+            send_message("Say, is your name 'BERNARD' by any chance?", "default", "refwell");
             break;
 
             case 11:
@@ -224,7 +224,7 @@ public class stage1_4_cutscene : Cutscene
             case 35:
             break;
 
-            case 99: // UNUSED
+            case 99: // UNUSED IN-GAME, KEPT FOR REFERENCE ONLY
             animate_refwell("an_refwell_laugh");
             SoundManager.instance.PlaySound(SFX_RATLAUGH);
 
@@ -236,11 +236,6 @@ public class stage1_4_cutscene : Cutscene
 
             timer.set_wait_time(2.0f);
             timer.timer_start();
-            break;
-
-            case 100: // UNUSED
-            animate_refwell("an_refwell_idle");
-            send_message("We are in a cutscene now lol", "default", "refwell");
             break;
 
             default:

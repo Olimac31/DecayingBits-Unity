@@ -29,6 +29,9 @@ public class stage1_0_cutscene : Cutscene
                 the_player.gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 anims.Play("s1_0_phase1");
 
+                GameManager.instance.player_broken_jump = true;
+                the_player.setJumpSpeed(GameManager.instance.get_broken_jump());
+
                 playeractor.speed = 0.1f;
             }
             break;
