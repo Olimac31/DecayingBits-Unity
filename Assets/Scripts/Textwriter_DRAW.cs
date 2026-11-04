@@ -54,6 +54,7 @@ public class Textwriter_DRAW : MonoBehaviour
             case "finished":
             portrait.GetComponent<Image>().sprite = Textwriter.instance.character_data.get_emotion(Textwriter.instance.current_emotion, 0);
             text_to_write_to.text = Textwriter.instance.message_to_parse;
+            text_to_write_to.maxVisibleCharacters = Textwriter.instance.message_to_parse.Length;
             break;
 
             default:
@@ -69,6 +70,7 @@ public class Textwriter_DRAW : MonoBehaviour
 
             case "reading":
             text_to_write_to.text = Textwriter.instance.current_message;
+            text_to_write_to.maxVisibleCharacters = (int)Textwriter.instance.current_position;
 
             // ALT FRAME
             if(alt_frame_timer > 0)

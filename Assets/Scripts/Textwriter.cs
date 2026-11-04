@@ -11,7 +11,7 @@ public class Textwriter : MonoBehaviour
 
     public string message_to_parse = "";
     public string current_message = "";
-    float current_position = 0f;
+    public float current_position = 0f;
     float write_speed = 70f;
 
     // Visuals
@@ -146,7 +146,10 @@ public class Textwriter : MonoBehaviour
         if (current_position < (float)message_to_parse.Length)
         {
             current_position += Time.deltaTime * write_speed;
-            current_message = message_to_parse.Substring(0, (int)current_position);
+
+            current_message = message_to_parse;
+            // OLD TYPEWRITER METHOD --------------------
+            //current_message = message_to_parse.Substring(0, (int)current_position);
 
             play_voice_beep();
         }

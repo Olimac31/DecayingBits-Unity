@@ -416,4 +416,9 @@ public class playerMovement : MonoBehaviour
 
         onDeath.Invoke();
     }
+
+    public void setJumpSpeed(float new_speed)
+    {
+        JUMP_SPEED = new_speed;
+    }
 }

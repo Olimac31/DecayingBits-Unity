@@ -52,8 +52,10 @@ public class GameManager : MonoBehaviour
 
     public bool player_broken_jump = true;
     float player_broken_jump_force = 16.0f;
+    float player_normal_jump_force = 28.0f;
     public bool player_walljump = false;
     public bool intro_cutscene_seen = false;
+    public bool refwell_cutscene_seen = false;
 
     /*
     ///////////////
@@ -193,5 +195,9 @@ public class GameManager : MonoBehaviour
     public float get_broken_jump()
     {
         return player_broken_jump_force;
+    }
+    public float get_regular_jump()
+    {
+        return player_normal_jump_force;
     }
 }
