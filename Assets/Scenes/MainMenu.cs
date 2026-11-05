@@ -128,7 +128,7 @@ public class MainMenu : MonoBehaviour
         {
             // Start
             case 0:
-            scene_to_load = "Assets/Scenes/STAGE_1/stage1_7.unity";
+            scene_to_load = "Assets/Scenes/STAGE_1/stage1_9.unity";
             change_state(STATES_LEAVING);
             break;
 

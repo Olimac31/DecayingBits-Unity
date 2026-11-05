@@ -87,7 +87,10 @@ public class FanArea : detects_player
                 break;
             }
 
-            temp_player.can_cancel_jump = false;
+            if(air_force_dir == force_direction.UP || air_force_dir == force_direction.UPLEFT || air_force_dir == force_direction.UPRIGHT)
+            {
+                temp_player.can_cancel_jump = false;
+            }
         }
     }
 }
