@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     protected float WALK_SPEED = 3.5f;
     protected float JUMP_SPEED = 65f;
     protected float MAX_SPEED = 26f;
-    protected float player_impulse = 30f;
+    protected float player_impulse = 34f;
     protected Vector2 velocity = new Vector2(0, 0);
     
     // Colliders
@@ -201,7 +201,15 @@ public class Enemy : MonoBehaviour
             if (the_player.velocity.y < 0 && stompable)
             {
                 take_damage(damage_to_take);
-                the_player.velocity.y = player_impulse;
+                if(the_player.keyJump)
+                {
+                    the_player.velocity.y = player_impulse;
+                }
+                else
+                {
+                    the_player.velocity.y = player_impulse * 0.75f;
+                }
+                
                 the_player.can_cancel_jump = false;
             }
 
