@@ -59,6 +59,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/demo1end.unity
     guid: 3c033ce10c2210248ac8bee0231c33e1
+  - enabled: 1
+    path: Assets/Scenes/democredits.unity
+    guid: ea3788ad4838cc64ca64e0d0a19d67dd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

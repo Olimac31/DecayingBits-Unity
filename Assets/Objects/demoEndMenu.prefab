@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 548088045431722072}
+  - component: {fileID: 7822180335765426974}
   m_Layer: 0
   m_Name: demoEndMenu
   m_TagString: Untagged
@@ -31,3 +32,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7822180335765426974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711337382456908620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c9082784db6e54d98b729640b70791, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::scr_demoend_MENU
+  exited: 0

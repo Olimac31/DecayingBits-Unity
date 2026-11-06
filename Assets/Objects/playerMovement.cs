@@ -156,7 +156,8 @@ public class playerMovement : MonoBehaviour
         // DEBUG, REMOVE LATER
         if(Input.GetButton("debug_death"))
         {
-            Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)", "default", "refwell");
+            takeDamage(9999f, true);
+            //Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)", "default", "refwell");
         }
     }
     void FixedUpdate()
@@ -418,6 +419,14 @@ public class playerMovement : MonoBehaviour
     public void die()
     {
         GameManager.instance.global_position_on_death = new Vector2(transform.position.x, transform.position.y);
+        if(facingDirection == 1)
+        {
+            GameManager.instance.flipped_state_on_death = false;
+        }
+        else
+        {
+            GameManager.instance.flipped_state_on_death = true;
+        }
         already_dead = true;
         GameManager.instance.on_player_death();
 

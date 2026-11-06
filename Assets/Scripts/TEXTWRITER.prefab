@@ -159,8 +159,8 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 16
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 432, y: 240}
-  m_ScreenMatchMode: 1
-  m_MatchWidthOrHeight: 0
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -198,10 +198,10 @@ MonoBehaviour:
   state: closed
   message_to_parse: 
   current_message: 
+  current_position: 0
   character_data: {fileID: 11400000, guid: 53dc7491a7abb7b45adad308c7c1d2c4, type: 2}
   current_emotion: 
   canvas_group: {fileID: 0}
-  SFX_Skip: {fileID: 8300000, guid: 56276e8d877f78d4b80e056f91e0140b, type: 3}
   closed:
     m_PersistentCalls:
       m_Calls: []

@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public float game_over_timer = 0.0f;
 
     public Vector2 global_position_on_death = new Vector2(0, 0);
+    public bool flipped_state_on_death = false;
     public Vector2 camera_global_position_on_death = new Vector2(0, 0);
     public Vector2 camera_limit_h_on_death = new Vector2(-999, 999);
     public Vector2 camera_limit_v_on_death = new Vector2(-999, 999);
