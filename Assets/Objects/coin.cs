@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class coin : MonoBehaviour
 {
     int coin_value = 1;
-    public AudioClip coin_sfx;
+    public AudioClip[] coin_sfx;
     bool grabbed = false;
     detects_player collision;
     Animator anims;
@@ -29,7 +29,9 @@ public class coin : MonoBehaviour
         {
             grabbed = true;
             GameManager.instance.grab_coin(coin_value, this.gameObject.name, SceneManager.GetActiveScene().path);
-            SoundManager.instance.PlaySound(coin_sfx);
+
+            int rnd = Random.Range(0, 2);
+            SoundManager.instance.PlaySound(coin_sfx[rnd]);
             die();
         }
     }

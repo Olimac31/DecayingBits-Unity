@@ -487,6 +487,7 @@ MonoBehaviour:
   SFX_Select: {fileID: 8300000, guid: 363acf172757d89429b8434a06717341, type: 3}
   SFX_Confirm: {fileID: 8300000, guid: 56276e8d877f78d4b80e056f91e0140b, type: 3}
   exit_timer: {fileID: 3017650330037186100}
+  OPTIONS_MENU: {fileID: 2090065447401878992, guid: 09d8e19375a318a43bdc8ff079297726, type: 3}
 --- !u!1 &8969055633637207775
 GameObject:
   m_ObjectHideFlags: 0

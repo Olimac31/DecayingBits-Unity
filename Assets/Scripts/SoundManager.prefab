@@ -307,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _musicSource: {fileID: 756778641774039955}
   _effectSource: {fileID: 16651575173119725}
+  mainMixer: {fileID: 24100000, guid: 864fa986bf53c4a428d2e23a14fe056e, type: 2}
 --- !u!81 &1718898943687362428
 AudioListener:
   m_ObjectHideFlags: 0

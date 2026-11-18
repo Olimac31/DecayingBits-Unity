@@ -21,6 +21,15 @@ public class scr_PAUSE_MENU : MonoBehaviour
 
     public GodotTimer exit_timer;
 
+    public GameObject OPTIONS_MENU;
+    GameObject spawned_OPTIONS_MENU;
+
+    float enter_cooldown = 0.0f;
+    float enter_cooldown_MAX = 0.1f;
+
+    float options_opener_timer = 0.0f;
+    float options_opener_timer_MAX = 0.1f;
+
     //Singleton code---------------------------------
     void Awake()
     {
@@ -50,6 +59,16 @@ public class scr_PAUSE_MENU : MonoBehaviour
     void Update()
     {
         state_behavior();
+
+        if(enter_cooldown >= 0.0f)
+        {
+            enter_cooldown -= Time.unscaledDeltaTime;
+        }
+
+        if(options_opener_timer >= 0.0f)
+        {
+            options_opener_timer -= Time.unscaledDeltaTime;
+        }
     }
 
     public void change_state(int new_state = STATE_NORMAL)
@@ -76,11 +95,21 @@ public class scr_PAUSE_MENU : MonoBehaviour
             anims.Play("pause_exit");
             HUD.instance.HUD_EXIT();
             exit_timer.timer_start();
-
-            GameManager.instance.change_room("Assets/Scenes/MainMenu.unity");
+            Transition.instance.trans_in();
+            
+            CAN_PAUSE = false;
+            GameManager.instance.change_room("Assets/Scenes/MainMenu.unity", 0.01f);
             break;
 
             case STATE_IN_OPTIONS:
+            if(spawned_OPTIONS_MENU == null)
+                {
+                    spawned_OPTIONS_MENU = Instantiate(OPTIONS_MENU);
+                }
+            spawned_OPTIONS_MENU.GetComponent<scr_OptionsMenu>().options_exited.AddListener(on_settings_closed);
+            
+            enter_cooldown = enter_cooldown_MAX;
+            options_opener_timer = options_opener_timer_MAX;
             break;
 
             default:
@@ -131,7 +160,7 @@ public class scr_PAUSE_MENU : MonoBehaviour
             change_option(1);
         }
 
-        if (Input.GetButtonDown("Submit"))
+        if (Input.GetButtonDown("Submit") && enter_cooldown < 0.0f)
         {
             choose_an_option();
             SoundManager.instance.PlaySound(SFX_Confirm);
@@ -159,7 +188,11 @@ public class scr_PAUSE_MENU : MonoBehaviour
 
     void behavior_in_options()
     {
-        
+        if(options_opener_timer < 0.0f && options_opener_timer > -1.0f)
+        {
+            spawned_OPTIONS_MENU.GetComponent<scr_OptionsMenu>().OPEN_MENU();
+            options_opener_timer = -1.0f;
+        }
     }
 
     void behavior_quitting()
@@ -206,9 +239,7 @@ public class scr_PAUSE_MENU : MonoBehaviour
 
             // Options
             case 1:
-            // PLACEHOLDER
-            change_state(STATE_NORMAL);
-            anims.Play("pause_exit");
+            change_state(STATE_IN_OPTIONS);
             break;
 
             // Exit
@@ -233,5 +264,14 @@ public class scr_PAUSE_MENU : MonoBehaviour
     void on_exit_timer_timeout()
     {
         change_state(STATE_NORMAL);
+        CAN_PAUSE = true;
+    }
+
+    void on_settings_closed()
+    {
+        change_state(STATE_PAUSED);
+        enter_cooldown = enter_cooldown_MAX;
+
+        spawned_OPTIONS_MENU.GetComponent<scr_OptionsMenu>().options_exited.RemoveListener(on_settings_closed);
     }
 }

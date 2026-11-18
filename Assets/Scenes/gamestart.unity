@@ -666,7 +666,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 37255754531245739, guid: 3077d24ff900d8847a4b21a81082754f, type: 3}
       propertyPath: intro_cutscene_seen
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 37255754531245739, guid: 3077d24ff900d8847a4b21a81082754f, type: 3}
       propertyPath: refwell_cutscene_seen

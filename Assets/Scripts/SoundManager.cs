@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
     [SerializeField] private AudioSource _musicSource, _effectSource;
+
+    [SerializeField] private AudioMixer mainMixer;
 
     //Singleton code---------------------------------
     void Awake()
@@ -47,5 +50,15 @@ public class SoundManager : MonoBehaviour
     public void StopMusic()
     {
         _musicSource.Stop();
+    }
+
+    public void UpdateVolume()
+    {
+        _musicSource.volume = GameManager.instance.get_setting("music_vol");
+        _effectSource.volume = GameManager.instance.get_setting("sfx_vol");
+
+        // decibel bullshit
+        float converted_dB = Mathf.Log10(Mathf.Clamp(GameManager.instance.get_setting("master_vol"), 0.0001f, 1f)) * 20f;
+        mainMixer.SetFloat("MASTER_VOLUME", converted_dB);
     }
 }

@@ -20,6 +20,9 @@ public class stage1_0_cutscene : Cutscene
                 cam.camLimitUp = 9f;
                 HUD.instance.HUD_ENTER();
 
+                GameManager.instance.player_broken_jump = true;
+                the_player.setJumpSpeed(GameManager.instance.get_broken_jump());
+
                 jump_to_step(10);
                 return;
             }

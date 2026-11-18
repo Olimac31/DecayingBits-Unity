@@ -12,7 +12,7 @@ public class cameraController : MonoBehaviour
     public float camLimitUp, camLimitDown, camLimitLeft, camLimitRight;
 
     bool cameraWaiting = true;
-    float cameraWaitingTime = 0.1f;
+    float cameraWaitingTime = 0.025f;
     // Start is called before the first frame update
     void Start()
     {

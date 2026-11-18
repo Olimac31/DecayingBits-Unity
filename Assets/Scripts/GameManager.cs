@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent health_changed;
     public UnityEvent coin_changed;
+    public UnityEvent setting_changed;
 
     /*
     ////////////////////////////
@@ -57,6 +58,16 @@ public class GameManager : MonoBehaviour
     public bool player_walljump = false;
     public bool intro_cutscene_seen = false;
     public bool refwell_cutscene_seen = false;
+
+    /*
+    ///////////////////
+    //   SETTINGS   //-------------------------------------
+    /////////////////
+    */
+    public float master_vol = 1.0f;
+    public float mus_vol = 1.0f;
+    public float sfx_vol = 1.0f;
+    public bool flashing_lights = true;
 
     /*
     ///////////////
@@ -213,5 +224,75 @@ public class GameManager : MonoBehaviour
     public float get_regular_jump()
     {
         return player_normal_jump_force;
+    }
+
+    public float get_setting(string setting_to_get = "master_vol")
+    {
+        switch(setting_to_get)
+        {
+            case "master_vol":
+            return master_vol;
+            break;
+
+            case "music_vol":
+            return mus_vol;
+            break;
+
+            case "sfx_vol":
+            return sfx_vol;
+            break;
+        }
+        
+        Debug.Log("GameManager.cs:: get_setting(): UNKNOWN SETTING");
+        return 0.0f;
+    }
+    public bool get_bool_setting(string setting_to_get)
+    {
+        switch(setting_to_get)
+        {
+            case "flashing_lights":
+            return flashing_lights;
+            break;
+        }
+
+        Debug.Log("GameManager.cs:: get_bool_setting(): UNKNOWN SETTING");
+        return false;
+    }
+
+    public void set_setting(string setting_to_set, float value = 0.0f)
+    {
+        switch(setting_to_set)
+        {
+            case "master_vol":
+            master_vol = value;
+            SoundManager.instance.UpdateVolume();
+            break;
+
+            case "music_vol":
+            mus_vol = value;
+            SoundManager.instance.UpdateVolume();
+            break;
+
+            case "sfx_vol":
+            sfx_vol = value;
+            SoundManager.instance.UpdateVolume();
+            break;
+        }
+
+        setting_changed.Invoke();
+    }
+    public void set_bool_setting(string setting_to_set, bool value = true)
+    {
+        switch(setting_to_set)
+        {
+            case "flashing_lights":
+            flashing_lights = value;
+            break;
+
+            default:
+            Debug.Log("GameManager.cs:: set_bool_setting(): UNKNOWN SETTING");
+            break;
+        }
+        setting_changed.Invoke();
     }
 }

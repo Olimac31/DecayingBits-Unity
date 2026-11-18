@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    const string STATES_CHOOSING = "choosing", STATES_LEAVING = "leaving", STATES_QUITTING = "quitting";
+    const string STATES_CHOOSING = "choosing", STATES_LEAVING = "leaving", STATES_QUITTING = "quitting", STATES_IN_OPTIONS = "in_options";
     string state = STATES_CHOOSING;
     int option_id = 0;
     int chosen_option = 0;
@@ -23,6 +23,11 @@ public class MainMenu : MonoBehaviour
 
     public string scene_to_load = "";
 
+    public scr_OptionsMenu SETTINGS_MENU;
+
+    float enter_cooldown = 0.0f;
+    float enter_cooldown_MAX = 0.1f;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +43,7 @@ public class MainMenu : MonoBehaviour
         anims = GameObject.Find("MENU_ANIMS").GetComponent<Animator>();
 
         leaving_timer.GetComponent<GodotTimer>().timeout.AddListener(leave_menu);
+        SETTINGS_MENU.options_exited.AddListener(on_settings_closed);
 
         change_option(0);
     }
@@ -46,6 +52,11 @@ public class MainMenu : MonoBehaviour
     void Update()
     {
         state_behavior();
+
+        if(enter_cooldown > 0.0f)
+        {
+            enter_cooldown -= Time.deltaTime;
+        }
     }
 
     public void change_state(string new_state = "")
@@ -61,6 +72,10 @@ public class MainMenu : MonoBehaviour
             case STATES_LEAVING:
             anims.Play("anim_quit");
             leaving_timer.GetComponent<GodotTimer>().timer_start();
+            break;
+
+            case STATES_IN_OPTIONS:
+            SETTINGS_MENU.OPEN_MENU();
             break;
 
             case STATES_QUITTING:
@@ -82,6 +97,9 @@ public class MainMenu : MonoBehaviour
 
             case STATES_LEAVING:
             behavior_leaving();
+            break;
+
+            case STATES_IN_OPTIONS:
             break;
 
             case STATES_QUITTING:
@@ -128,18 +146,23 @@ public class MainMenu : MonoBehaviour
         {
             // Start
             case 0:
-            scene_to_load = "Assets/Scenes/STAGE_1/stage1_5.unity";
+            scene_to_load = "Assets/Scenes/STAGE_1/stage1_1.unity";
             change_state(STATES_LEAVING);
             break;
 
-            // Credits
+            // Options
             case 1:
+            change_state(STATES_IN_OPTIONS);
+            break;
+
+            // Credits
+            case 2:
             scene_to_load = "Assets/Scenes/democredits.unity";
             change_state(STATES_LEAVING);
             break;
 
             // Exit
-            case 2:
+            case 3:
             change_state(STATES_QUITTING);
             break;
 
@@ -163,8 +186,11 @@ public class MainMenu : MonoBehaviour
 
         if (Input.GetButtonDown("Submit"))
         {
-            choose_an_option();
-            SoundManager.instance.PlaySound(SFX_Confirm);
+            if(enter_cooldown <= 0.0f)
+            {
+                choose_an_option();
+                SoundManager.instance.PlaySound(SFX_Confirm);
+            }
         }
 
         // VISUALS
@@ -179,5 +205,12 @@ public class MainMenu : MonoBehaviour
     public void leave_menu()
     {
         GameManager.instance.change_room(scene_to_load, 1.5f);
+    }
+
+    void on_settings_closed()
+    {
+        change_state(STATES_CHOOSING);
+
+        enter_cooldown = enter_cooldown_MAX;
     }
 }
