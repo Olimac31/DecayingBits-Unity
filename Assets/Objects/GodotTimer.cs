@@ -90,7 +90,7 @@ public class GodotTimer : MonoBehaviour
             break;
             
             case TIMER_ON:
-            time_left -= Time.deltaTime;
+            time_left -= Time.unscaledDeltaTime;
 
 			if (time_left < 0)
             {

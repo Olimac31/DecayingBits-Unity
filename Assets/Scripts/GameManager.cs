@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         {
             game_over_timer += Time.deltaTime;
 
-            if(game_over_timer >= 0.01f)
+            if(game_over_timer >= 0.03f)
             {
                 goto_gameover();
             }
@@ -123,6 +123,9 @@ public class GameManager : MonoBehaviour
         playerHP = playerHPMAX;
         game_over_timer = 0.0f;
         game_over_queued = true;
+
+        HUD.instance.HUD_HIDE();
+        Transition.instance.trans_instant_cover();
     }
 
     public void goto_gameover()

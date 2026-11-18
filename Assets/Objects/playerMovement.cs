@@ -154,11 +154,14 @@ public class playerMovement : MonoBehaviour
         }
 
         // DEBUG, REMOVE LATER
-        if(Input.GetButton("debug_death"))
+        if(Input.GetButton("debug_death") && scr_PAUSE_MENU.instance.PAUSED == false)
         {
             takeDamage(9999f, true);
             //Textwriter.instance.show_message("This is a test message, isn't that so cool? You can show LOADS of text in this thing :)", "default", "refwell");
         }
+
+        // PAUSING
+        pausing_behavior();
     }
     void FixedUpdate()
     {
@@ -436,5 +439,13 @@ public class playerMovement : MonoBehaviour
     public void setJumpSpeed(float new_speed)
     {
         JUMP_SPEED = new_speed;
+    }
+
+    public void pausing_behavior()
+    {
+        if(Input.GetButton("keyPause") && !reading)
+        {
+            scr_PAUSE_MENU.instance.request_pause();
+        }
     }
 }

@@ -14,6 +14,7 @@ public class game_over_menu : MonoBehaviour
     void Start()
     {
         HUD.instance.HUD_HIDE();
+        Transition.instance.trans_none();
 
         cam.camLimitDown = GameManager.instance.camera_limit_v_on_death.x;
         cam.camLimitUp = GameManager.instance.camera_limit_v_on_death.y;
@@ -44,7 +45,7 @@ public class game_over_menu : MonoBehaviour
     public void goback()
     {
         SceneManager.LoadScene(GameManager.instance.preDeathRoom, LoadSceneMode.Single);
-        Transition.instance.trans_none();
+        Transition.instance.trans_out();
 
         timer.timeout.RemoveListener(goback);
     }

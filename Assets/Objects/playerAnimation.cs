@@ -20,8 +20,11 @@ public class playerAnimation : MonoBehaviour
         anims.speed = 0.2f;
 
         // FLIPPING ANIMATION
-        if (player.intMove < 0) sprite.flipX = true;
-        if (player.intMove > 0) sprite.flipX = false;
+        if (!scr_PAUSE_MENU.instance.PAUSED)
+        {
+            if (player.intMove < 0) sprite.flipX = true;
+            if (player.intMove > 0) sprite.flipX = false;
+        }
 
         // MOVING --------------------------------------------
         if (player.velocity.x > 0.4f || player.velocity.x < -0.4f)
