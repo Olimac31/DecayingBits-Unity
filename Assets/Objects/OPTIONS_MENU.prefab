@@ -305,6 +305,7 @@ MonoBehaviour:
   option_list: {fileID: 490952742194398541}
   SFX_Select: {fileID: 8300000, guid: 363acf172757d89429b8434a06717341, type: 3}
   SFX_Confirm: {fileID: 8300000, guid: 56276e8d877f78d4b80e056f91e0140b, type: 3}
+  SFX_Cancel: {fileID: 8300000, guid: 971480eb48f9acd46b11bac84c9fedc6, type: 3}
   options_exited:
     m_PersistentCalls:
       m_Calls: []
