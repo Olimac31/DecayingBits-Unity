@@ -1,4 +1,15 @@
-HOW TO OPEN THE PROJECT:
+## License
+
+Decaying Bits uses separate licenses for its source code and creative assets.
+
+- **Source Code:** Licensed under the [Apache License, Version 2.0](LICENSE.txt).
+- **Creative Assets and Intellectual Property:** All original characters, artwork, animations, music, sound effects, narrative content, and other creative materials are governed by [LICENSE-ASSETS.md](LICENSE-ASSETS.md).
+
+The Apache License applies exclusively to the project's source code and does not grant rights to its proprietary creative assets.
+
+Please refer to the respective license documents for complete terms and conditions.
+
+## HOW TO OPEN THE PROJECT:
 - Install Unity 6.3 LTS
 - Clone the repository
 - Import it to Unity
